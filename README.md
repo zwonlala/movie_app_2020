@@ -1,68 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Movie App using React
 
-## Available Scripts
+리엑트에 대해 다시 공부하기 위해 시작하는 노마드 코더의 리액트 기초 강의
 
-In the project directory, you can run:
+- package.json에서   "scripts"에 있는 test와 eject 삭제(∵ 사용하지 않을거임)
+- 프로젝트 dir에 있는 yarn.lock 삭제 (∵ 사용하지 않음)
+>> yarn.lock의 용도
+https://www.daleseo.com/js-package-locks/ 에서 설명을 봄
 
-### `yarn start`
+세 줄 요약
+1)npm, yarn이라는 자바스크립트 패키지 매니저가 있음. 
+저 친구들은 패키지를 프로젝트에 설치하거나 갱신 또는 삭제할 때 사용되는 도구.
+package.json 파일에 해당 프로젝트가 의존하고 있는 모든 패키지 이름과 버젼을 명시
+(dependencies : 설치되어야 하는 패키지 / devDependencies : 개발할때만 필요한 패키지들)
+-> npm i(stall) or yarn i(nstall) 명령어로 필요한 패키지를 모두 다운받을 수 있고, node_modules 디렉터리에 저장됨
+(∴ package.json 파일만 있으면 다운받을 수 있으니 node_modules 디렉터리는 .gitignore에 추가한다)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+2)but 패키지 버젼은 설치 시점에 따라 달라짐...;;
+그래서 팀원마다 패키지의 버젼이 달라질 수 있고, 큰 문제가 생김
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+∴ 패키지 잠금이라는 개념을 패키지 매니져(npm, yarn)에서 지원
 
-### `yarn test`
+3)yarn이나  npm을 통해 프로젝트에 새로운 패키지를 설치하면 
+-> package.json에 해당 패키지가 등록 &&
+-> 패키지 잠금 파일(package-lock.json, yarn.lock)이 생성!!
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+패키지 잠금 파일에는 프로젝트에 패키지가 최초로 추가될 당시의 버젼을 기록함!!
+-> 패키지 잠금 파일이 생성된 이후에는 npm i와 같은 명렁어를 수행해도 npm registry에 등록한 최신 버젼을 설치하지 않음!
+대신 항상 패키지 잠금 파일에 명시되어 있는 버젼으로 패키지를 설치해주기 때문에, 설치 시점에 상관없이 항상 동일한 버젼의 패키지가 설치됨을 보장받음!
 
-### `yarn build`
+그래서 패키지 잠금 파일을 git에 추가하여 올려두면, 다른 사람들도 package.json 파일 뿐 아니라 package-lock.json 파일도 내려받음
+그럼 모든 개발자의 피시와 배포되는 서버도 package-lock.json에 기록된 버젼 기준으로 패키지가 설치!!! 😀
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+주의 사항!
+1) 프로젝트 최초 셋팅하는 개발자는 패키지 잠금 파일을 git 저장소에 무조건 올려야 한다!
+2) 패키지 잠금 파일은 패키지 매니져가 패키지의 변동(새로운 설치 or 갱신/제거)이 있을때 package.json과 자동으로 동기를 맞춰주기 때문에 개발자가 이 파일을 직접 수정해야 할 필요는 없고 하면 안됨!
+3) 신규 패키지를 설치하거나 갱신/제거한 개발자는  package.json과 더불어 함께 업데이트 된 패키지 잠금 파일을 반드시 커밋해야 함!!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
