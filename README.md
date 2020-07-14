@@ -150,3 +150,51 @@ react가 fun.cool.sexy 한 이유는 바로 "재사용 가능한 `component`를 
 (-> component를 계속해서 반복해서 사용 가능!)
 
 <br><br><br><br>
+
+## 2.2
+Fix code index.js using map fuction to show Component dynamically
+<br><br>
+### how to show Component Dynamically
+
+이전 코드에서는 **index.js**에서 ```<Food favourite="~~~" />``` 이 코드를 복붙해서 원하는 **component**를 보여줌!
+
+But 실제로 돌아가는 코드에서는 서버로부터 받은 정보를 그렇게 일일히 복붙해서 보여줄 수 없음
+
+∴ dynamic하게 보여줘야하는데 이때 **`map`** 이 사용됨!!
+
+[**map**이 뭔가요...?](https://velog.io/@zwonlala/%EB%B0%B0%EC%97%B4-%EB%82%B4%EC%9E%A5%ED%95%A8%EC%88%98-map)
+
+<br><br>
+
+```javascript
+function App() {
+  return (
+    <div >
+      {foodILike.map(dish => 
+        <Food 
+          name={dish.name} 
+          picture={dish.image} />)}
+    </div>
+  );
+}
+```
+
+와 같이 App component 안에 **`map`** 함수를 사용하여 foodILike 배열에 저장되어 있는 객체들의 정보를 각각 Food component에 넣어 dynamic하게 뿌려준다!!   
+
+<br>
+
+그리고 위의 Food component는
+
+```javascript
+function Food({ name, picture }) {
+  return (
+    <div>
+      <h3>I like { name }</h3>
+      <img src={picture} alt={name}/>
+    </div>
+  );
+}
+```
+와 같이 정의하여 props로 전달받은 data를 뿌려준다!!
+
+<br><br><br><br>
