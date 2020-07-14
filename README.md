@@ -109,3 +109,44 @@ ReactDOM.render(<App /><~~ />, document.getElementById("root");
 ∴ 새로만든 ~~ `Component`를 App안에 넣어줘야 한다!!
 
 <br><br><br><br>
+
+## 2.1
+
+delete Potato.js file   
+add Food Component inside of index.js
+<br><br>
+### Props
+
+Component에 정보를 보낼 수 있는 방법!!!
+
+**HTML**에서 ```<div class="hello">```와 같이 속성? 값을 주듯이   
+내가 정의한 `Component`에 ```<Food name="kimchi" />``` 이렇게 정보를 보낸다.  
+
+(위에서 한 일은 Food `Component`에 kimchi라는 value로 **`Prop`** name을 주었다!!)  
+
+-> Food `Component`에 name이라는 이름의 **`property`** (**`prop`**)를 kimchi라는 value로 준것!
+
+<br>
+
+ex)
+```javascript
+<Food name="kimchi" something={true} papago=["hello", 1, 2, 3, 4, true] />
+```
+-> **string**만 보낼 필요가 없고, **boolean**, **array**, **Object** 다 보낼 수 있다.  
+그리고 부모 `Component`에서 자식 `Component`로 원하는 많은 **`props`** 를 보낼 수 있다.
+
+<br>
+
+누군가가 Food `Component`로 정보를 보내려고 하면, React는 이 모든 속성을 가져옴
+그리고 Food function `Component`로 argument로 그것들을 넣음!!
+
+
+동적 데이터가 있는 `Component`가 있음   
+-> **jsx** + **`props`** 로 모두 재사용할 수 있음!
+
+<br>
+
+react가 fun.cool.sexy 한 이유는 바로 "재사용 가능한 `component`를 만들 수 있다는 점"  
+(-> component를 계속해서 반복해서 사용 가능!)
+
+<br><br><br><br>
