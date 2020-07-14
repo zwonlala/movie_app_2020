@@ -212,10 +212,8 @@ Install prop-types
 이전 코드에서처럼 **map**을 그냥 사용하면 이런 에러가 난다.
 
 
-![warning_message](/Users/songjiwon/Desktop/스크린샷 2020-07-14 오후 4.54.20.jpg)
+![스크린샷 2020-07-14 오후 4 54 20](https://user-images.githubusercontent.com/13375734/87404950-c7553480-c5f9-11ea-8e43-c84dd9360d1c.jpg)
 
-
-<img width="400" src="/Users/songjiwon/Desktop/스크린샷 2020-07-14 오후 4.54.20.jpg">
 <br><br>
 
 > react에서 모든 element들은 유일성을 가져야 하는데,   
@@ -286,10 +284,7 @@ Food.propTypes = {
 
 만약 여기에서 실제로 주어지는 타입이 아닌 다른 타입을 명시하면 이렇게 에러가 뜬다!
 
-![warning_message](/Users/songjiwon/Desktop/스크린샷 2020-07-14 오후 5.23.18.jpg)
-
-
-<img width="400" src="/Users/songjiwon/Desktop/스크린샷 2020-07-14 오후 5.23.18.jpg">
+![스크린샷 2020-07-14 오후 5 23 18](https://user-images.githubusercontent.com/13375734/87404975-cf14d900-c5f9-11ea-857d-f715b4b360de.jpg)
 
 <br><br><br>
 
