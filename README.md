@@ -198,3 +198,102 @@ function Food({ name, picture }) {
 와 같이 정의하여 props로 전달받은 data를 뿌려준다!!
 
 <br><br><br><br>
+
+## 2.3 & 2.4
+Fix Warning at map function
+<hr>
+
+Add rating info at FoodILike array   
+Add rating info to Food Component      
+Install prop-types 
+<br><br>
+### map 함수 사용시 주의점!
+
+이전 코드에서처럼 **map**을 그냥 사용하면 이런 에러가 난다.
+
+
+![warning_message](/Users/songjiwon/Desktop/스크린샷 2020-07-14 오후 4.54.20.jpg)
+
+
+<img width="400" src="/Users/songjiwon/Desktop/스크린샷 2020-07-14 오후 4.54.20.jpg">
+<br><br>
+
+> react에서 모든 element들은 유일성을 가져야 하는데,   
+list내 child로 들어갈때 uniqueness를 잃어버리기 때문에 map 부분을 수정해줘야 한다!!
+
+<br>
+
+
+```javascript
+{
+    id: 1, //추가!
+    name: "Kimchi",
+    image: "...",
+    rating: 5.0
+  },
+//...
+```
+foodILike 객체 배열의 각 객체에 id를 추가하고
+
+<br>
+
+```javascript
+function App() {
+  return (
+    <div >
+      {foodILike.map(dish => 
+        <Food 
+          key={dish.id}
+          name={dish.name} 
+          picture={dish.image} />)}
+    </div>
+  );
+}
+```
+이렇게 App Component의 map 부분을 수정한다!
+
+<br><br>
+
+
+
+<hr>
+<br><br>
+
+### PropTypes
+
+
+1. `npm i prop-types` 명령어를 통해 **`prop-types`** 를 설치한다
+
+2.  **`prop-types`** 를 사용할 파일 맨위에 
+```javascript
+import PropTypes from "prop-types";
+```
+라고 import 한다
+
+3.  **`prop-types`** 를 사용할 component 아래에 `~~~.propTypes = { ... }` 로 정의하고
+
+4. ...부분에 해당 component에 해당하는 인자에 대한 설정을 한다.
+
+```javascript
+Food.propTypes = {
+  name: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired
+}
+```
+
+<br><br>
+
+만약 여기에서 실제로 주어지는 타입이 아닌 다른 타입을 명시하면 이렇게 에러가 뜬다!
+
+![warning_message](/Users/songjiwon/Desktop/스크린샷 2020-07-14 오후 5.23.18.jpg)
+
+
+<img width="400" src="/Users/songjiwon/Desktop/스크린샷 2020-07-14 오후 5.23.18.jpg">
+
+<br><br><br>
+
+[이 문서](https://ko.reactjs.org/docs/typechecking-with-proptypes.html)를 보고 다양한 **`prop-types`** 사용법을 확인하기!!
+
+
+<br><br><br><br>
