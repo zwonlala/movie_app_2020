@@ -292,3 +292,141 @@ Food.propTypes = {
 
 
 <br><br><br><br>
+
+
+## 3.0
+
+delete Food Component and etc.   
+convert App Component from function Component to class Component
+<br><br>
+### Class Component
+
+#### `class component`만드는 법!
+
+1. `class ~~~ extends React.Component {...}`로 선언
+
+```javascript
+class ~~~ extends React.Component {
+	...
+}
+```
+
+class ~~~는 `react component`!  
+`react component` 안에는 여러가지가 있음(ex: state, ...) 
+그걸 상속 받은 것!
+  
+<br>
+
+2. render() method 생성
+
+function component에서는 return을 사용하여 원하는 컴포넌트를 반환하듯이
+
+class component에서는 `render() method`를 통해 원하는 컴포넌트를 반환함!
+
+`render() method`는 이미 react component에 존재함! (∴ 상속받은 ~~~ class에도 존재!)  
+
+```javascript
+class ~~~ extends React.Component {
+	render() {
+		return <h1>Im a class component</h1>;
+	}
+}
+```
+
+<br><br>
+
+**Function Component 와 Class Component 비교**
+
+
+**`function Component`** : function이고, 무언가를 return 함. 그리고 screen에 표시됨!
+
+**`class component`** : class이고, react component로부터 상속받아 확장되고, render 메소드가 실행되어 screen에 표시된다    
+(react는 자동적으로 모든 class component의 render method를 실행한다)
+
+class component를 사용하는 이유는 class component에. **`state`** 라는 것이 있기 때문!!
+
+<br><br>
+
+### State
+
+**`state`** 는 object이고
+
+component의 data를 넣을 공간이 있고 이 데이터는 변함!
+(-> state를 사용하는 이유!!)
+
+<br>
+
+**`state`** 사용 예시
+
+```javascript
+class App extends React.Component {
+	state = { //이렇게 변하는 data를 state에 넣고!
+		count: 0
+	}
+	
+	render() {
+		return <h1>Im a class component</h1>;
+	}
+}
+```
+
+<br>
+
+그리고 **`state`** 를 render 안에 넣고 싶으면
+
+```javascript
+//...
+	render() {
+		return <h1>{this.state.count}</h1>;
+	}
+//...
+```
+위와 같이 해주면 된다!
+
+우리가 바꾸고 싶은 데이터를 **`state`** 에 넣는다!!
+
+
+<br><br>
+
+그럼 데이터를 바꾸는 방법은 어떻게 하는가..?
+
+위 예제에서 조금 추가하면
+
+```javascript
+class App extends React.Component {
+  state = {
+    count: 0
+  }
+
+  add = () => {
+    console.log("add");
+  };
+  minus = () => {
+    console.log("minus");
+  }
+  render() {
+    return (
+      <div>
+        <h1>The number is: {this.state.count}</h1>
+        <button onClick={this.add}>Add</button>
+        <button onClick={this.minus}>Minus</button>
+      </div>
+    )
+  }
+}
+```
+이렇게 된다.
+
+
++) 이때 위 코드에서 button tag에서 onClick 속성을 추가할때   
+```button onClick={this.add()}>Add</button>```  
+이렇게 설정하면 함수를 onClick 속성에 연결하는 것이 아니라 함수가 바로 실행된다..!   
+버튼을 클릭해도 add 함수 실행안됨...!  
+
+
+<br><br>
+
+to be continued...
+
+<br><br><br><br>
+
