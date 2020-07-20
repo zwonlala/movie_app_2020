@@ -578,9 +578,26 @@ componentDidMount() : 컴포넌트가 마운트된 직후, 즉 트리에 삽입�
 호출되는 함수 순서
 - **componentWillUnmount**
 
-  
+<br><br><br><br>
+
+
+
+## 3.3 & 4.0 & 4.1
+
+install axios
+make Movie.js
+<br><br>
+
+### Fetching Data from API
+
+### axios
+
+### async & await
+
+
 <br><br>
 
 to be continued...
 
 <br><br><br><br>
+
