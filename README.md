@@ -523,6 +523,61 @@ change add, minus function using setState()
 
 > ### 매 순간 setState()를 호출할때마다, react는 새로운 state와 함께 render function을 호출한다!!!
 
+
+<br><br><br><br>
+
+
+
+## 3.2
+
+change nothing
+<br><br>
+
+### Component Life Cycle
+
+react class Component는 render 말고도 더 많은 함수들을 가지고 있다.
+
+**`life cycle method`** 를 가지는데, **`life cycle method`** 는 react가 component를 생성하고 없애는 방법!   
+(component가 생성 될 때, render() 전에 호출되는 몇 함수와 render() 된 후 호출되는 함수 )
+
+<https://ko.reactjs.org/docs/react-component.html> 이 문서 참고
+
+<br><br>
+
+#### 1. Mounting
+(컴포넌트의 인스턴스가 생성되어 DOM 상에 삽입될 때, "태어나는 것")  
+[Mounting 공식 문서](https://ko.reactjs.org/docs/react-component.html#mounting)
+
+ 호출되는 함수 순서
+- constructor()
+- ~static getDerivedStateFromProps()~
+- **render()**
+- **componentDidMount()**
+
+componentDidMount() : 컴포넌트가 마운트된 직후, 즉 트리에 삽입된 직후에 호출
+
+<br><br>
+
+#### 2. Updating
+(props 또는 state가 변경되면 갱신이 발생, "그냥 업데이트")  
+[Updating 공식 문서](https://ko.reactjs.org/docs/react-component.html#updating)
+
+호출되는 함수 순서(setState()를 호출할 때 마다 발생!)
+- ~static getDerivedStateFromProps()~
+- ~shouldComponentUpdate()~
+- **render()**
+- ~getSnapshotBeforeUpdate()~
+- **componentDidUpdate()**
+
+<br><br>
+
+#### 3. Unmounting
+(컴포넌트가 DOM 상에서 제거될 때, "component가 죽는 것"-페이지를 바꾸거나, state를 사용해 component를 교체,...)  
+[Unmounting 공식 문서](https://ko.reactjs.org/docs/react-component.html#unmounting)
+
+호출되는 함수 순서
+- **componentWillUnmount**
+
   
 <br><br>
 
