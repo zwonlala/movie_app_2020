@@ -424,9 +424,108 @@ class App extends React.Component {
 버튼을 클릭해도 add 함수 실행안됨...!  
 
 
+<br><br><br><br>
+
+
+## 3.1
+
+change add, minus function using setState()
+<br><br>
+
+### setState()
+
+만약 class Component 내의 add 함수와 minus 함수를 다음과 같이 고치면 워닝 메시지가 난다.
+
+```javascript
+//생략...
+
+  add = () => {
+    this.state.count = 1;
+  };
+  minus = () => {
+    this.state.count = -1;
+  }
+
+//생략...
+```
+
+![스크린샷 2020-07-20 오후 8 03 40](https://user-images.githubusercontent.com/13375734/87933796-d9871500-cac8-11ea-8d38-886e9c3a3767.jpg)
+
+다음과 같은 워닝 메시지가 출력되는데 `"Do not mutate state directly. Use setState()"` 라고 나온다.
+
+그리고 위와 같이 구현한 add, minus 함수는 정상적으로 작동하지 않는다.   
+(∵ 위와 같이 direct하게 **state**를 변경시키면 react가 render function을 refresh 하지 않기 때문이다.)
+
+<br>
+<br>
+
+즉 우리는 매번 **state**의 상태를 변경할 때, react가 render function을 호출해서 바꿔주길 원하고 있음.
+
+
+그래서 **`setState()`** 함수를 사용하면 react는 **state**가 변경되었음을 알고, render function을 다시 호출해준다!
+
+그리고 react는 Virtual Dom을 사용하기 때문에 변화가 있는 부분만 업데이트를 한다!   
+(그래서 매우 빠르게 변경할 수 있고, 깜빡거리지 않는다)
+
+<br>
+<br>
+
+#### setState() 사용한 버젼(Not good..)
+
+```javascript
+//생략...
+
+  add = () => {
+    this.setState({count: this.state.count + 1 });
+  };
+  minus = () => {
+    this.setState({count: this.state.count - 1 });
+  }
+
+//생략...
+```
+
+(위의 코드는 좋은 예시는 아님. 이 **state**에 의존적이고?, 몇가지 성능문제가 있을 수 있음!)
+
+<br>
+<br>
+
+#### setState() 사용한 버젼(good😎)
+
+
+그래서 다음과 같이 작성하는게 좀 더 좋은 코드이다!!
+
+
+```javascript
+//생략...
+
+  add = () => {
+    this.setState(current => ({count: current.count + 1}));
+  };
+  minus = () => {
+    this.setState(current => ({count: current.count - 1}));
+  }
+
+//생략...
+```
+
+`this.state.count`를 가져와서 사용하는 대신, `current`를 가져와서 사용!!   
+(이런 코드 스타일이 **state**를 set 할 때, react에서 외부의 상태에 의존하지 않는 가장 좋은 방법!!!)
+
+<br>
+<br>
+
+- face tattoo~~
+
+> 매 순간 setState()를 호출할때마다, react는 새로운 state와 함께 render function을 호출한다!!!
+
+> #### 매 순간 setState()를 호출할때마다, react는 새로운 state와 함께 render function을 호출한다!!!
+
+> ### 매 순간 setState()를 호출할때마다, react는 새로운 state와 함께 render function을 호출한다!!!
+
+  
 <br><br>
 
 to be continued...
 
 <br><br><br><br>
-
