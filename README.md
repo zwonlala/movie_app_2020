@@ -594,10 +594,23 @@ make Movie.js
 
 ### async & await
 
+<br><br><br><br>
+
+
+## 4.2 & 4.3 & 4.4 & 4.5 & 5.0
+
+update App component, Movie component's HTML  
+Add App.css, Movie.css files  
+Install gh-pages  
+Setting "homepage" attribute at package.json  
+Build project  
+Save "deploy", "predeploy" scripts at package.json  
+Change "public/index.html" \<title> to "AWSOME MOVIE APP"  
 
 <br><br>
 
 to be continued...
 
 <br><br><br><br>
+
 
